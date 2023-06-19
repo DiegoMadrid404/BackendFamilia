@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Acciones\" />
+    <Folder Include="DTO\Consulta\" />
+    <Folder Include="DTO\Negocio\" />
+    <Folder Include="DTO\Repositorio\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Recursos\rcsExpresionesRegulares.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>rcsExpresionesRegulares.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Recursos\rcsMensajesComunes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>rcsMensajesComunes.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Recursos\rcsParametrosAplicacion.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>rcsParametrosAplicacion.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Recursos\rcsUtilitarios.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>rcsUtilitarios.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Recursos\rcsUtilitariosTransaccional.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>rcsUtilitariosTransaccional.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Recursos\rcsExpresionesRegulares.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>rcsExpresionesRegulares.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Recursos\rcsMensajesComunes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>rcsMensajesComunes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Recursos\rcsParametrosAplicacion.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>rcsParametrosAplicacion.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Recursos\rcsUtilitarios.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>rcsUtilitarios.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Recursos\rcsUtilitariosTransaccional.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>rcsUtilitariosTransaccional.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

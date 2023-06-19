@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Clases\BL\" />
+    <Folder Include="Clases\BO\Consulta\" />
+    <Folder Include="Clases\BO\Negocio\" />
+    <Folder Include="Clases\BO\Repositorio\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\3. Datos\Proyecto.Datos\Proyecto.Datos.csproj" />
+    <ProjectReference Include="..\..\4. Interfaces Comunes\Proyecto.IC\Proyecto.IC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Recursos\rcsMensajesNegocio.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>rcsMensajesNegocio.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Recursos\rcsMensajesNegocio.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>rcsMensajesNegocio.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
