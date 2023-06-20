@@ -61,7 +61,7 @@ namespace Proyecto.API.Controllers
         /// <returns>Respuesta tipo Hijos </returns>
         [HttpPost]
         [Route("ConsultarHijosLlave")]
-        public async Task<Respuesta<Hijos>> ConsultarHijosLlave(Hijos hijos)
+        public async Task<Respuesta<Hijos>> ConsultarHijosLlave([FromBody] Hijos hijos)
         {
             return await this.EjecutarTransaccionAPI<Task<Respuesta<Hijos>>, HijosController>(async () =>
             {
@@ -77,7 +77,7 @@ namespace Proyecto.API.Controllers
         [HttpPost]
         [Route("GuardarHijos")]
         [ValidarModelo]
-        public async Task<Respuesta<Hijos>> GuardarHijos(Hijos hijos)
+        public async Task<Respuesta<Hijos>> GuardarHijos([FromBody] Hijos hijos)
         {
             return await this.EjecutarTransaccionAPI<Task<Respuesta<Hijos>>, HijosController>(async () =>
             {
@@ -93,7 +93,7 @@ namespace Proyecto.API.Controllers
         [HttpPut]
         [Route("EditarHijos")]
         [ValidarModelo]
-        public async Task<Respuesta<Hijos>> EditarHijos(Hijos hijos)
+        public async Task<Respuesta<Hijos>> EditarHijos([FromBody] Hijos hijos)
         {
             return await this.EjecutarTransaccionAPI<Task<Respuesta<Hijos>>, HijosController>(async () =>
             {
@@ -107,12 +107,12 @@ namespace Proyecto.API.Controllers
         /// <param name="hijos">Entidad a eliminar</param>
         /// <returns>Respuesta tipo Hijos </returns>
         [HttpDelete]
-        [Route("EliminarHijos")]
-        public async Task<Respuesta<Hijos>> EliminarHijos(Hijos hijos)
+        [Route("EliminarHijos/{identificacion}")]
+        public async Task<Respuesta<Hijos>> EliminarHijos(int identificacion)
         {
             return await this.EjecutarTransaccionAPI<Task<Respuesta<Hijos>>, HijosController>(async () =>
             {
-                return Mapeador.MapearObjetoPorJson<Respuesta<Hijos>>(await negocioHijos.Value.EliminarHijosAsync(hijos));
+                return Mapeador.MapearObjetoPorJson<Respuesta<Hijos>>(await negocioHijos.Value.EliminarHijosAsync(identificacion));
             });
         }
     }

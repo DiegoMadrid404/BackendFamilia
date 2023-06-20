@@ -107,6 +107,23 @@ namespace Proyecto.Negocio.Clases.BL
             System.Transactions.IsolationLevel.ReadUncommitted,
             async () =>
             {
+                Task<bool> existePadre = this.ConsultarIdentifiacionPadresExisteAsync(hijos.IdentificacionPadre);
+                Task<bool> existeMaddre = this.ConsultarIdentifiacionPadresExisteAsync(hijos.IdentificacionMadre);
+                Task.WaitAll(existePadre, existeMaddre);
+                if (!existeMaddre.Result || !existePadre.Result)
+                {
+                    respuesta.Resultado = false;
+                    respuesta.TipoNotificacion = TipoNotificacion.Advertencia;
+                    if (!existeMaddre.Result)
+                    {
+                        respuesta.Mensajes.Add(rcsMensajesNegocio.MadreNoExiste);
+                    }
+                    if (!existePadre.Result)
+                    {
+                        respuesta.Mensajes.Add(rcsMensajesNegocio.PadreNoExiste);
+                    }
+                    return respuesta;
+                }
                 respuesta = await this.hijosRepositorioAccion.Value.EditarHijosAsync(hijos);
                 respuesta.Resultado = true;
                 respuesta.TipoNotificacion = TipoNotificacion.Exitoso;
@@ -122,13 +139,13 @@ namespace Proyecto.Negocio.Clases.BL
         /// </summary>
         /// <param name="hijos">Entidad a eliminar</param>
         /// <returns>Respuesta tipo Hijos </returns>
-        public async Task<Respuesta<IHijosDTO>> EliminarHijosAsync(IHijosDTO hijos)
+        public async Task<Respuesta<IHijosDTO>> EliminarHijosAsync(int identificacion)
         {
             return await this.EjecutarTransaccionBDAsync<Respuesta<IHijosDTO>, HijosBL>(
             System.Transactions.IsolationLevel.ReadUncommitted,
             async () =>
             {
-                respuesta = await this.hijosRepositorioAccion.Value.EliminarHijosAsync(hijos);
+                respuesta = await this.hijosRepositorioAccion.Value.EliminarHijosAsync(identificacion);
                 respuesta.Resultado = true;
                 respuesta.TipoNotificacion = TipoNotificacion.Exitoso;
                 respuesta.Mensajes.Add(rcsMensajesComunes.MensajeEntidadEliminadaConExito);

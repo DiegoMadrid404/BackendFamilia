@@ -53,7 +53,7 @@ namespace Proyecto.IC.Acciones.Repositorio
 		/// </summary>
 		/// <param name="hijos">Entidad a eliminar</param>
 		/// <returns>Respuesta tipo Hijos </returns>
-		Task<Respuesta<IHijosDTO>> EliminarHijosAsync(IHijosDTO hijos);
+		Task<Respuesta<IHijosDTO>> EliminarHijosAsync(int identificacion);
 	}
 
 

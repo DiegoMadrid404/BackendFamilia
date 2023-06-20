@@ -123,14 +123,13 @@ namespace Proyecto.Datos.Clases.DAL.Repositorio
 		/// </summary>
 		/// <param name="padres">Entidad a eliminar</param>
 		/// <returns>Respuesta tipo Padres </returns>
-        public async Task<Respuesta<IPadresDTO>> EliminarPadresAsync(IPadresDTO padres)
+        public async Task<Respuesta<IPadresDTO>> EliminarPadresAsync(int identificacion)
         {
             return await this.EjecutarTransaccionAsync<Respuesta<IPadresDTO>, PadresDAL>(async () =>
             {
 				Padres PadresEntidad = repositorio.BuscarPor(entidad => entidad
-					.Identificacion == padres.Identificacion).FirstOrDefault();
-				Mapeador.MapearObjetosPorPropiedad(padres, PadresEntidad);
-				repositorio.Eliminar(PadresEntidad);
+					.Identificacion == identificacion).FirstOrDefault();
+ 				repositorio.Eliminar(PadresEntidad);
                 repositorio.Guardar();
                 return respuesta;
             });

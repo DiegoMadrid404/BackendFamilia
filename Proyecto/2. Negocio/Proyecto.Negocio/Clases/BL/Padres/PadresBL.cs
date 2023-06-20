@@ -115,13 +115,13 @@ namespace Proyecto.Negocio.Clases.BL
 		/// </summary>
 		/// <param name="padres">Entidad a eliminar</param>
 		/// <returns>Respuesta tipo Padres </returns>
-		public async Task<Respuesta<IPadresDTO>> EliminarPadresAsync(IPadresDTO padres)
+		public async Task<Respuesta<IPadresDTO>> EliminarPadresAsync(int identificacion)
 		{
 			return await this.EjecutarTransaccionBDAsync<Respuesta<IPadresDTO>, PadresBL>(
 			System.Transactions.IsolationLevel.ReadUncommitted,
 			async () =>
 			{
-				 respuesta= await this.padresRepositorioAccion.Value.EliminarPadresAsync(padres);
+				 respuesta= await this.padresRepositorioAccion.Value.EliminarPadresAsync(identificacion);
 				 respuesta.Resultado = true;
 				 respuesta.TipoNotificacion = TipoNotificacion.Exitoso;
 				 respuesta.Mensajes.Add(rcsMensajesComunes.MensajeEntidadEliminadaConExito);
